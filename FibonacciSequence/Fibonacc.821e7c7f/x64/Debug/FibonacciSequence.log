@@ -1,0 +1,7 @@
+﻿  fib1.cpp
+C:\Users\annag\source\repos\FibonacciSequence\fib1.cpp(16,36): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+C:\Users\annag\source\repos\FibonacciSequence\fib1.cpp(16,36): warning C4267:         with
+C:\Users\annag\source\repos\FibonacciSequence\fib1.cpp(16,36): warning C4267:         [
+C:\Users\annag\source\repos\FibonacciSequence\fib1.cpp(16,36): warning C4267:             _Ty=int
+C:\Users\annag\source\repos\FibonacciSequence\fib1.cpp(16,36): warning C4267:         ]
+  FibonacciSequence.vcxproj -> C:\Users\annag\source\repos\FibonacciSequence\x64\Debug\FibonacciSequence.exe
