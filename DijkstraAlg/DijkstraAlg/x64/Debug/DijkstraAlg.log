@@ -1,0 +1,3 @@
+﻿  Dijkstra.cpp
+C:\Users\annag\source\repos\DijkstraAlg\Dijkstra.cpp(18,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DijkstraAlg.vcxproj -> C:\Users\annag\source\repos\DijkstraAlg\x64\Debug\DijkstraAlg.exe
