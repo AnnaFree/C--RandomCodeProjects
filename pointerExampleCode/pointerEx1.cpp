@@ -15,11 +15,11 @@ struct Node {
 class LinkedList {
 private:
 	//private pointer to the head node of the list
-	Node* headNode; 
+	Node* headNode;
 
 public:
 	//constructor
-	LinkedList() : headNode(nullptr){}
+	LinkedList() : headNode(nullptr) {}
 
 	//Desctructor
 	//~ signifies deconstructor and it has no arguments
@@ -36,7 +36,7 @@ public:
 
 	//insert at head function
 	void insertAtHead(int value) {
-		Node* newNode = new Node(value); 
+		Node* newNode = new Node(value);
 		//-> is equal to (*newNode).nextNode
 		newNode->nextNode = headNode;
 		headNode = newNode;
@@ -66,51 +66,115 @@ public:
 	//search for data value, return index - used for delete
 	int search(int value) {
 		Node* current = headNode;
-		int tempNodeIndex = 0;
+		int tempNodeIndex = 0; bool foundValue = false;
 		while (current) {
 			if (current->data == value) {
-				cout << current << ": " << current->data;
+				cout << "Search value found at memory address: ";
+				cout << current << ": - Value is: " << current->data << endl;
+				foundValue == true;
 				return tempNodeIndex;
 			}
 			tempNodeIndex++;
 			current = current->nextNode;
+		}
+		if (foundValue == false) {
+			cout << "value not found" << endl;
 		}
 		return tempNodeIndex;
 	}
 	//moves node forward
 	//delete node by value
 	void deleteByValue(int value) {
-		int forwardVal = search(value);
-		Node* deleteNode = headNode;
-		for (int i = 0; i <= forwardVal; i++) {
-			if (deleteNode == nullptr) {
-				cout << "Reached end of the list before " << forwardVal << " node was reached. ";
-
+		Node* current = headNode;
+		Node* previous = nullptr;
+		while (current != nullptr) {
+			if (current->data == value)
+			{
+				//rearrange leftover nodes
+				if (previous != nullptr) {
+					previous->nextNode = current->nextNode;
+				}
+				else {
+					headNode = current->nextNode;
+				}
+				delete current;
+				cout << "Target value found and deleted" << endl;
+				return;
 			}
-			if (i == forwardVal) {
-				delete deleteNode;
+			else {
+				//shift along in searcg
+				previous = current;
+				current = current->nextNode;
 			}
-			deleteNode->nextNode;
 		}
+		cout << "Value not found in the list" << endl;
 
 	}
-	void changeByValue(int value) {
-		Node* changedNode = headNode;
-		int changeLoc = search(value);
-		for (int i = 0; i <= changeLoc; i++) {
-			if (changedNode == nullptr) {
-				cout << "Reached end of the list before " << changeLoc << " node was reached. ";
+	void changeByValue(int value, int newValue) {
+		Node* current = headNode;
+		while (current != nullptr) {
+			if (current->data == value) {
+				current->data = newValue;
+				cout << "Target value found and changed" << endl;
+				return;
+			}
+			else {
+				//shift along in search
+				current = current->nextNode;
+			}
+		}
+		cout << "Value not found in the list" << endl;
 
+	}
+	void numericalSort() {
+		if (headNode == nullptr) return; // Handle empty list
+		bool sorted = false; 
+		while (!sorted) { 
+			sorted = true; // Assume the list is sorted initially 
+			Node* current = headNode; 
+			Node* tempAhead = headNode->nextNode; 
+			while (tempAhead != nullptr) { 
+				if (current->data > tempAhead->data) { 
+					// Swap the values 
+					int placeholder = current->data; 
+					current->data = tempAhead->data; 
+					tempAhead->data = placeholder; 
+					sorted = false; 
+					cout << current->data << " and " << tempAhead->data << " values switched" << endl; 
+				} 
+				
+				current = tempAhead; 
+				tempAhead = tempAhead->nextNode;
 			}
-			if (i == changeLoc) {
-				changedNode->data = value;
-			}
-			changedNode->nextNode;
 		}
 	}
-
 };
 
 int main() {
 	LinkedList list1;
+	list1.insertAtHead(10);
+	list1.insertAtHead(20);
+	list1.insertAtHead(30);
+
+	list1.display();
+
+	list1.insertAtTail(43);
+	list1.insertAtTail(32);
+
+	list1.search(30);
+	list1.search(100);
+
+	//delete test
+	list1.insertAtTail(70);
+	list1.display();
+	list1.deleteByValue(20);
+	list1.display();
+	list1.changeByValue(30, 61);
+	list1.display();
+
+	list1.numericalSort();
+	list1.display();
+
+
+	return 0;
 }

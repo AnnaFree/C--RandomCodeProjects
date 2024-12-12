@@ -1,2 +1,3 @@
 ﻿  pointerEx1.cpp
+C:\Users\annag\source\repos\pointerExampleCode\pointerEx1.cpp(74,16): warning C4553: '==': result of expression not used; did you intend '='?
   pointerExampleCode.vcxproj -> C:\Users\annag\source\repos\pointerExampleCode\x64\Debug\pointerExampleCode.exe
